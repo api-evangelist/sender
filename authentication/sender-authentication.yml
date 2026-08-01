@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.senderwallet.io/guide/sign-in-applications
+docs: https://docs.senderwallet.io/guide/sign-in-applications
+summary:
+  types: [wallet-connect]
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    Sender is a self-custody Web3 wallet. Authentication is user approval of a
+    connection/sign-in request inside the wallet UI, not a server credential.
+schemes:
+  - name: near-sign-in
+    type: wallet-connect
+    chain: near
+    methods:
+      - requestSignIn   # request an access key scoped to a contract account
+      - signOut         # clear the signed-in access key
+      - isSignedIn      # check for an active session
+      - getAccountId    # read the selected NEAR account id
+    docs: https://docs.senderwallet.io/guide/sign-in-applications/sign-in-applications-in-near
+  - name: ethereum-account-access
+    type: wallet-connect
+    chain: ethereum
+    standard: EIP-1102
+    methods:
+      - eth_requestAccounts    # prompt the user to expose an address
+      - wallet_requestPermissions
+      - wallet_getPermissions
+    docs: https://docs.senderwallet.io/guide/sign-in-applications/sign-in-applications-in-ethereum
+signing:
+  near: [signAndSendTransaction, requestSignTransactions]
+  ethereum: [eth_sendTransaction, personal_sign]

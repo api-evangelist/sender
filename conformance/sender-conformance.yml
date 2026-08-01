@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.senderwallet.io/api-reference/ethereum/ethereum-provider-api
+summary: >-
+  Cross-cutting Web3 standards the Sender Wallet provider API conforms to,
+  asserted from the provider documentation. Sender is a multi-chain injected
+  wallet provider (NEAR, Ethereum + EVM chains, TON).
+standards:
+  - id: eip-1193
+    name: Ethereum Provider JavaScript API
+    conforms: true
+    evidence: docs describe request(args), connect/disconnect/accountsChanged/chainChanged events, and error code 4001
+  - id: eip-1102
+    name: Opt-in account access (eth_requestAccounts)
+    conforms: true
+    evidence: docs describe eth_requestAccounts / wallet_requestPermissions account-access flow
+  - id: near-wallet-selector
+    name: NEAR wallet provider interface
+    conforms: true
+    evidence: near.requestSignIn/signAndSendTransaction/requestSignTransactions provider surface documented
+  - id: ton-connect
+    name: TON dApp provider
+    conforms: true
+    evidence: docs publish a TON mobile dApp provider reference

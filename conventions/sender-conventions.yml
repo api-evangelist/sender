@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.senderwallet.io/guide/getting-started
+docs: https://docs.senderwallet.io/
+summary: >-
+  Sender Wallet exposes an injected browser-provider API (not a hosted REST
+  API). Once the extension/app is installed it injects JavaScript provider
+  objects into the page's window, and dApps call methods and subscribe to
+  events on those objects. NEAR and Ethereum each have their own provider.
+integration_model: injected-provider
+providers:
+  - chain: near
+    object: window.sender.near
+    legacy_object: window.near
+    detection: window.near.isSender === true
+    rpc_style: near.request({ method, params }) plus first-class helper methods
+  - chain: ethereum
+    object: window.sender.ethereum
+    detection: typeof window.sender !== 'undefined'
+    rpc_style: window.sender.ethereum.request(args) EIP-1193 JSON-RPC
+  - chain: ton
+    object: mobile dapp provider
+    docs: https://docs.senderwallet.io/api-reference/ton/mobile-dapp-provider
+authentication:
+  style: wallet-connect
+  near: near.requestSignIn() establishes an access key; near.signOut() clears it
+  ethereum: eth_requestAccounts / wallet_requestPermissions grant account access (EIP-1102)
+  note: No API keys, no OAuth, no bearer tokens. Authorization is user approval in the wallet UI.
+idempotency:
+  supported: false
+  note: On-chain transactions are signed and broadcast; there is no idempotency-key contract.
+pagination:
+  supported: false
+events:
+  model: provider event emitter (on/off listeners)
+  near: [signIn, signOut, accountChanged, rpcChanged]
+  ethereum: [accountsChanged, chainChanged, connect, disconnect, message]
+error_envelope:
+  standard: EIP-1193 provider errors (Ethereum)
+  example: code 4001 = user rejected the request
+  cross_ref: errors/sender-error-codes.yml
+versioning:
+  scheme: extension/app semantic version gates the API surface
+  breakpoint: window.sender.* introduced in v2.0.0; window.near retained for backward compatibility
+  cross_ref: lifecycle/sender-lifecycle.yml
+cross_reference:
+  authentication: authentication/sender-authentication.yml
+  errors: errors/sender-error-codes.yml
+  lifecycle: lifecycle/sender-lifecycle.yml
+  conformance: conformance/sender-conformance.yml

@@ -1,8 +1,30 @@
 aid: sender
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sender.png
 name: Sender
-description: 'Sender is a company surfaced as a portfolio company of pantera-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  Sender (Sender Wallet, by Sender Labs / SENDER TECH LIMITED) is a self-custody
+  multi-chain Web3 wallet for NEAR, Ethereum and all EVM-compatible chains
+  (Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, Scroll, zkSync Era, TON
+  and 20+ networks), shipping as a Chrome/Brave/Edge browser extension and iOS
+  and Android apps. For developers, Sender exposes an injected browser-provider
+  API: dApps detect the wallet on window.sender.near / window.sender.ethereum
+  (with legacy window.near support), request sign-in / account access, and sign
+  and broadcast transactions. The Ethereum provider follows EIP-1193 and
+  EIP-1102; NEAR exposes requestSignIn, signAndSendTransaction and request. The
+  wallet is audited by SlowMist and runs a bug bounty. Surfaced as a portfolio
+  company of Pantera Capital.
 url: https://raw.githubusercontent.com/api-evangelist/sender/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +34,17 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Crypto
+- Wallet
+- Web3
+- Blockchain
+- Ethereum
+- NEAR
+- DeFi
+- Self-Custody
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +54,38 @@ maintainers:
 common:
 - type: Website
   url: https://senderwallet.io/
+- type: Documentation
+  url: https://docs.senderwallet.io/
+- type: APIReference
+  url: https://docs.senderwallet.io/api-reference/near
+- type: GettingStarted
+  url: https://docs.senderwallet.io/guide/getting-started
+- type: Support
+  url: mailto:support@sender.org
+- type: Blog
+  url: https://medium.com/@senderlabs
+- type: LLMsTxt
+  url: llms/sender-llms.txt
+- type: Conventions
+  url: conventions/sender-conventions.yml
+- type: Authentication
+  url: authentication/sender-authentication.yml
+- type: Lifecycle
+  url: lifecycle/sender-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/sender-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/sender-error-codes.yml
+- type: Conformance
+  url: conformance/sender-conformance.yml
+- type: DomainSecurity
+  url: security/sender-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/sender-vulnerability-disclosure.yml
+- type: Security
+  url: https://senderwallet.io/securityreport
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v1

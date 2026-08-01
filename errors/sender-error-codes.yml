@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.senderwallet.io/api-reference/ethereum/ethereum-provider-api
+docs: https://docs.senderwallet.io/api-reference/ethereum
+format: eip-1193
+summary: >-
+  The Sender Ethereum provider surfaces JSON-RPC / provider errors following
+  the EIP-1193 error standard (the docs explicitly call out code 4001 for user
+  rejection). The codes below are the EIP-1193 provider error set the provider
+  conforms to; 4001 is the one documented verbatim by Sender.
+error_codes:
+  - code: 4001
+    name: userRejectedRequest
+    meaning: The user rejected the request.
+    documented: true
+  - code: 4100
+    name: unauthorized
+    meaning: The requested method/account has not been authorized by the user.
+    documented: false
+  - code: 4200
+    name: unsupportedMethod
+    meaning: The provider does not support the requested method.
+    documented: false
+  - code: 4900
+    name: disconnected
+    meaning: The provider is disconnected from all chains.
+    documented: false
+  - code: 4901
+    name: chainDisconnected
+    meaning: The provider is not connected to the requested chain.
+    documented: false
+standard: https://eips.ethereum.org/EIPS/eip-1193

@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.senderwallet.io/api-reference/near/deprecated-apis
+versioning:
+  scheme: client-version
+  note: >-
+    The provider API surface is gated by the installed extension/app version.
+    window.sender.near / window.sender.ethereum were introduced in v2.0.0;
+    the legacy window.near object is retained for backward compatibility
+    (v1.11.7 and below).
+  current: v2.x
+  docs: https://docs.senderwallet.io/guide/getting-started
+deprecation:
+  policy_url: https://docs.senderwallet.io/api-reference/near/deprecated-apis
+  sunset_header: false
+sla:
+  url: null
+status_page: null
+deprecated_operations:
+  - method: near.connect
+    replacement: near.requestSignIn
+  - method: near.disconnect
+    replacement: near.signOut
+  - method: near.isConnected
+    replacement: null
+  - method: near.sendMoney
+    replacement: near.signAndSendTransaction
+  - method: near.viewFunction
+    replacement: near.request
